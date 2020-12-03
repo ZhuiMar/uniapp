@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../vue.js" type="text/javascript" charset="UTF-8">
+			
+		</script>
+	</head>
+	<body>
+		
+		<div id="app">
+			{{title}}
+		</div>
+		
+		<script type="text/javascript">
+			var app = new Vue({
+				 el:'#app',
+				 data:{title:'vue生命周期的钩子'},
+				 
+				 /*
+				 1.整个页面创建之前的调用
+				 */
+				 beforeCreate:function(){
+				 	console.log("beforeCreate===>整个页面创建之前的调用")
+				 },
+				 
+				 /*
+				 1.vue实例(及页面创建完成)之后立即调用
+				 2.在这一步实例已经完成了一下的配置,数据观察（data observer）方法和属性的计算(watch/event)的回调
+				 3.但是数据的挂载阶段还没有完成，所以el 是不可见的
+				 */
+				created:function(){
+					console.log("created===>整个页面创建之前的调用")
+				},
+				 
+				 /*
+				 1.相关的渲染首次被调用
+				 */
+				 beforeMount:function(){
+				 	console.log("beforeMount===>vue的data数据挂载之前的一个调用(将要挂载的时候)")
+				 },
+				 
+				 /*
+				 1.el 被新创建的 app.$el 所替换，挂载成功了
+				 */
+				 mounted:function(){
+				 	console.log("mounted===>挂载成功的时候调用")
+				 },
+				 
+				 /*
+				 1. 更新之前就是数据变化之前被调用
+				 */
+				 beforeUpdate:function(){
+				 	console.log("beforeUpdate===>更新之前被调用")
+				 },
+				 
+				 /*
+				 1. 数据更新完毕
+				 2. 所有的数据更新完毕
+				 */
+				 updated:function(){
+				 	console.log("updated===>数据更新完毕")
+				 },
+			})
+			
+			setTimeout(function(){
+				app.$data.title = 'change.....'
+			}, 3000)
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../vue.js" type="text/javascript" charset="UTF-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			{{title}}
+		</div>
+		
+		<script type="text/javascript">
+			var data = {title:'数据与方法'}
+			var app = new Vue({
+				el:'#app',
+				data:data,
+			})
+			
+			// 注意:data 里面必须提前声明data的变量, 才可以在元素中使用变量
+			
+			// 使用data变量去改变值
+			data.title = 'old value' 
+			
+			// 使用vue实例去改变值
+			// app.$data.title = '使用$符号区分vue实例的属性和vue实例的函数...' 
+			
+			// watch 函数观察变量title的值变化,可以捕捉到新的值和旧的值
+			app.$watch('title',function(newVal,oldVal){
+				console.log('新的值=======',newVal)
+				console.log('旧的值=======',oldVal)
+			});
+			app.$data.title = 'old value'
+			
+		</script>
+	</body>
+</html>
