@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../vue.js" charset="UTF-8" type="text/javascript">
+			
+		</script>
+	</head>
+	<body>
+		
+		<div id="app">
+			{{title}}
+			<ul>
+				<li v-for="item in items" :key="index">
+					{{item.message}}
+				</li>
+			</ul>
+			
+			<ul>
+				<li v-for="item,index in items">
+					{{index}} = {{item.message}}
+					
+				</li>
+			</ul>
+			
+			<ul>
+				<li v-for="value in object">
+					{{value}}
+				</li>
+			</ul>
+			
+			<ul>
+				<li v-for="value,key in object" :key="key">
+					{{key}} : {{value}}
+				</li>
+			</ul>
+		</div>
+		
+		
+		<script type="text/javascript">
+			/*
+			1.v-for="item in items"       获取数组中的对象
+			2.v-for="value in object"     还可以用来做对象的属性的值
+			3.v-for="item,index in items" 同时获取值和下标
+			4.v-for="value,key in object" 同时获取对象的值和键
+			5.为了列表可重用 和通过数据的变化去改变排列顺序 需要给元素一个身份 就是key
+			*/
+			var app = new Vue({
+				el:"#app",
+				data:{
+					title:"列表渲染",
+					items:[
+						{message:'foor'},
+						{message:'hhh'},
+						{message:'ahlk'}],
+					object:{
+						one:"nhkladjblakd",
+						two:"mnklandlka09u900",
+						three:"687 blkasdb  lhkjasd ljkads",
+						four:"hllk kadsj jklasd lkjad",
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

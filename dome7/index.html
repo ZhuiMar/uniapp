@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../vue.js" charset="UTF-8" type="text/javascript">
+			
+		</script>
+	</head>
+	<body>
+		
+		<div id="app">
+			{{title}}
+			<div v-bind:class="['fon']"  v-if="type === 'A'">
+				A
+			</div>
+			
+			<div v-bind:class="['fon']"  v-else-if="type === 'B'">
+				B
+			</div>
+			
+			<div v-bind:class="['fon']"  v-else-if="type === 'C'">
+				C
+			</div>
+			
+			<div v-bind:class="['fon']"  v-else>
+				D
+			</div>
+			
+			<h1 v-show="show">adsda</h1>
+		</div>
+		
+		<script type="text/javascript">
+			
+			/*
+			1.v-if v-else-if v-else 控制元素是否显示界面上 条件不合适就生成元素
+			2.v-show 相当于隐藏和显示的切换, 都是回渲染到页面上的 频繁的切换的话用v-show
+			*/
+			
+			var app = new Vue({
+				el:"#app",
+				data:{
+					title:"条件渲染",
+					type:"B",
+					show:true,
+				}
+			})
+		</script>
+		
+		<style type="text/css">
+			.fon{color: #0000FF;font-size: 7rem;}
+		</style>
+	</body>
+</html>

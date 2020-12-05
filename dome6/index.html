@@ -11,18 +11,43 @@
 		<div id="app">
 			{{title}}
 			<div 
-			v-bind:class="{active: isActive}"
-			style="background-color: red;width: 12.5rem;height: 12.5rem; text-align: center;line-height: 12.5rem;">
+			class="test"
+			v-bind:class="{active: isActive, green: isGreen}"
+			style="width: 12.5rem; height: 12.5rem; text-align: center;line-height: 12.5rem;">
 				look me
 			</div>
+			
+			<div 
+			v-bind:style="{color:color,fontSize:size}"
+			>
+				hakjldh
+			</div>
+			
+			<div
+			v-bind:style="{color:color,fontSize:size, background: isRed ? '#FF0000' : ''}"
+			>
+				ijhlnjlinlj
+			</div>
+			
 		</div>
 		
 		<script type="text/javascript">
+			/*
+			1.v-bind 可以绑定class
+			2.也可以直接申明class的属性、两者的class是可以共存的
+			3.v-bind 也是可以绑定多个class 比如green 和 active
+			4.v-bind 可以通过数组的形式添加样式,效果是一样的 v-bind:class="['active','green']"
+			5.一数组绑定的形式也是可以动态控制的 v-bind:class="[isActive ? 'active' : '', isGreen ？'green' : '']"
+			*/
 			var app = new Vue({
 				el:'#app',
 				data:{
 					title:'class与style绑定',
 					isActive:true,
+					isGreen:true,
+					color:'#0000FF',
+					size:'2.5rem',
+					isRed:true,
 				},
 				methods:{
 					
@@ -30,7 +55,9 @@
 			})
 		</script>
 		<style type="text/css">
-			.active{background-color:blue;}
+			.test{font-size: 2.5rem;}
+			.active{background: #0000FF;}
+			.green{color: aquamarine;}
 		</style>
 	</body>
 </html>

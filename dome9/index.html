@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../vue.js" charset="UTF-8" type="text/javascript">
+			
+		</script>
+	</head>
+	<body>
+		
+		<div id="app">
+			{{title}}
+			<div id="exp-1">
+				<button type="button1" v-on:click="green1()">click1</button>
+				<button type="button2" v-on:click="green2('我是参数')">click2</button>
+				<button type="button3" v-on:click="green3('我是参数和$event', $event)">click3</button>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			var app = new Vue({
+				el:"#app",
+				data:{
+					title:"事件的绑定",
+					name:"vue.js"
+				},
+				methods:{
+					green1:function(){
+						alert('不传参数')
+						alert('获取vue 的data 的参数' + this.$data.name) // methods 内部调用data的变量
+					},
+					
+					green2:function(xin){ // 参数的传递
+						alert(xin)
+					},
+					
+					green3:function(xin, e){ // 参数的传递 和 event
+						alert(xin);
+						console.log(e);
+					},
+				}
+			})
+		</script>
+	</body>
+</html>
